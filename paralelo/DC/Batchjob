@@ -58,7 +58,7 @@ echo ################
 
 ############# If running a sequential or openMP program
 
-./min-dist-bf > min-dist-bf.output 2> min-dist-bf.times
+./min-dist-dc > min-dist-dc.output 2> min-dist-dc.times
 
 ################
 
