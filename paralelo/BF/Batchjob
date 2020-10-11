@@ -13,7 +13,7 @@
 
 ################ Change these parameters according to your requisites
 
-#PBS -l nodes=grad08:ppn=16:cluster-Grad,walltime=00:10:00
+#PBS -l nodes=grad08:ppn=16:cluster-Grad,walltime=00:30:00
 
 ################ Where:
 ################ nodes = number of nodes requested
@@ -59,6 +59,19 @@ echo ################
 ############# If running a sequential or openMP program
 
 ./min-dist-bf > min-dist-bf.output 2> min-dist-bf.times
+
+export OMP_NUM_THREADS=2
+./min-dist-dc > min-dist-dc-2.output 2> min-dist-dc-2.times
+
+export OMP_NUM_THREADS=4
+./min-dist-dc > min-dist-dc-4.output 2> min-dist-dc-4.times
+
+export OMP_NUM_THREADS=8
+./min-dist-dc > min-dist-dc-8.output 2> min-dist-dc-8.times
+
+export OMP_NUM_THREADS=16
+./min-dist-dc > min-dist-dc-16.output 2> min-dist-dc-16.times
+
 
 ################
 
