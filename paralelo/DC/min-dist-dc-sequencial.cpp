@@ -90,17 +90,8 @@ double points_min_distance_dc(point_t *point,point_t *border,int l, int r) {
     }
 
     int m = (l+r)/2;
-    double dL;
-    double dR;
-
-    #pragma omp parallel sections
-     {
-        #pragma omp section
-        dL = points_min_distance_dc(point,border,l,m);
-
-        #pragma omp section
-        dR = points_min_distance_dc(point,border,m,r);
-     }
+    double dL = points_min_distance_dc(point,border,l,m);
+    double dR = points_min_distance_dc(point,border,m,r);
     minDist = (dL < dR ? dL : dR);
 
     int k = l;

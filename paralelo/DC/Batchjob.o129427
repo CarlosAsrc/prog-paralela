@@ -1,0 +1,46 @@
+--------------------------------------
+Running PBS prologue script
+
+Checking all prerequisites...
+Done.
+
+Running on host grad08
+
+Initial Time is Tue Oct 13 01:40:09 BRT 2020
+
+Directory is /home/pp12701/prog-paralela/paralelo/DC
+
+This jobs runs on the following nodes:
+grad08
+
+JOB_ID:
+129427
+
+Final Time is Tue Oct 13 01:46:53 BRT 2020
+
+--------------------------------------
+Running PBS epilogue.user script
+
+End of PBS epilogue.user script
+
+--------------------------------------
+Running PBS epilogue script
+
+Disabling access of user pp12701 on the batch nodes
+Doing node grad08
+
+ -- Killing all stale user  processes... done.
+ -- Cleaning-up any shmemory segments... done.
+
+Done.
+
+Resources used:
+
+ -- CPU TIME     = 00:10:39 
+
+ -- MEMORY       = 302124kb 
+
+ -- VIRTUAL MEM  = 1056508kb 
+
+ -- ELAPSED TIME = 00:06:44 
+
