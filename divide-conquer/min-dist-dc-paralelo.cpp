@@ -1,5 +1,5 @@
 /* min-dist-dc2.c (Roland Teodorowitsch; 17 Sep. 2020)
- * Compilation: g++ min-dist-dc2.cpp -o min-dist-dc2 -fopenmp -lm
+ * Compilation: g++ min-dist-dc-paralelo.cpp -o min-dist-dc-paralelo -fopenmp -lm
  * Note: Includes some code from the sequential solution of the
  *       "Closest Pair of Points" problem from the
  *       14th Marathon of Parallel Programming avaiable at
@@ -90,8 +90,19 @@ double points_min_distance_dc(point_t *point,point_t *border,int l, int r) {
     }
 
     int m = (l+r)/2;
-    double dL = points_min_distance_dc(point,border,l,m);
-    double dR = points_min_distance_dc(point,border,m,r);
+    double dL;
+    double dR;
+    
+    // Define uma sequência de blocos a serem executados em paralelo:
+    #pragma omp parallel sections
+     {
+        // Define bloco a ser executado em uma thread em paralelo:
+        #pragma omp section
+        dL = points_min_distance_dc(point,border,l,m);
+        // Define bloco a ser executado em uma thread em paralelo:
+        #pragma omp section
+        dR = points_min_distance_dc(point,border,m,r);
+     }
     minDist = (dL < dR ? dL : dR);
 
     int k = l;

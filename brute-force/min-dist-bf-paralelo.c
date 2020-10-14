@@ -1,5 +1,5 @@
 /* min-dist-bf.c (Roland Teodorowitsch; 17 Sep. 2020)
- * Compilation: gcc min-dist-bf.c -o min-dist-bf -fopenmp -lm
+ * Compilation: gcc min-dist-bf-paralelo.c -o min-dist-bf-paralelo -fopenmp -lm
  * Note: Includes some code from the sequential solution of the
  *       "Closest Pair of Points" problem from the
  *       14th Marathon of Parallel Programming avaiable at
@@ -59,6 +59,12 @@ double points_min_distance_bf(point_t *points, int size) { /* bf = brute-force *
     int i, j;
     double min_d, d;
     min_d = DBL_MAX;
+    
+    /* Permite que as iterações do laço de repetição externo seja dividido pela quantidade
+     * de núcleos de processamento disponíveis, configurando as variáveis j e d para serem
+     * privadas à cada thread:
+     */
+    #pragma omp parallel for private (j, d)
     for (i=0; i< size-1; ++i) {
         for (j=i+1; j<size; ++j) {
             d = points_distance_sqr(points+i,points+j);

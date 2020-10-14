@@ -13,7 +13,7 @@
 
 ################ Change these parameters according to your requisites
 
-#PBS -l nodes=grad08:ppn=16:cluster-Grad,walltime=00:10:00
+#PBS -l nodes=grad08:ppn=16:cluster-Grad,walltime=00:30:00
 
 ################ Where:
 ################ nodes = number of nodes requested
@@ -37,7 +37,7 @@
 
 ################ Please, change this directory to your working dir.
 
-#PBS -d /home/pp12701/prog-paralela/sequencial/DC
+#PBS -d /home/pp12701/prog-paralela/divide-conquer
 
 ################
 
@@ -58,7 +58,21 @@ echo ################
 
 ############# If running a sequential or openMP program
 
-./min-dist-dc > min-dist-dc.output 2> min-dist-dc.times
+mkdir resultados
+
+./min-dist-dc-sequencial > resultados/min-dist-dc-sequencial.output 2> resultados/min-dist-dc-sequencial.times
+
+export OMP_NUM_THREADS=2
+./min-dist-dc-paralelo > resultados/min-dist-dc-paralelo-2.output 2> resultados/min-dist-dc-paralelo-2.times
+
+export OMP_NUM_THREADS=4
+./min-dist-dc-paralelo > resultados/min-dist-dc-paralelo-4.output 2> resultados/min-dist-dc-paralelo-4.times
+
+export OMP_NUM_THREADS=8
+./min-dist-dc-paralelo > resultados/min-dist-dc-paralelo-8.output 2> resultados/min-dist-dc-paralelo-8.times
+
+export OMP_NUM_THREADS=16
+./min-dist-dc-paralelo > resultados/min-dist-dc-paralelo-16.output 2> resultados/min-dist-dc-paralelo-16.times
 
 ################
 
