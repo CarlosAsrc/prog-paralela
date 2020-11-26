@@ -98,7 +98,7 @@ double points_min_distance_dc(point_t *point, point_t *border, int l, int r, int
 
     int menor, menor1, menor2;
     int tamanho, tamanho1, tamanho2;
-    int pai, filho1, filho2, p, id;
+    int pai, filho1, filho2;
     MPI_Status status;
     double minDist = DBL_MAX;
     double dist;
@@ -227,10 +227,10 @@ int main(int argc, char *argv[])
         MPI_Barrier(MPI_COMM_WORLD);
         elapsed_time = -MPI_Wtime();
         if (id == 0)
-            printf("%.6lf\n", sqrt(points_min_distance_dc(points, border, 0, i - 1)));
+            printf("%.6lf\n", sqrt(points_min_distance_dc(points, border, 0, i - 1, p, id)));
         else
         {
-            points_min_distance_dc(points, border, 0, i - 1);
+            points_min_distance_dc(points, border, 0, i - 1, p, id);
         }
         elapsed_time += MPI_Wtime();
         fprintf(stderr, "%d %lf\n", i, elapsed_time);
