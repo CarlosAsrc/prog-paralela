@@ -60,10 +60,10 @@ echo ################
 
 mkdir resultados
 
-mpirun -np 7  ./min-dist-dc-mpi 1> resultados/saida-dc-mpi-7.txt 2> resultados/tempos-dc-mpi-7.txt
-mpirun -np 15 ./min-dist-dc-mpi 1> resultados/saida-dc-mpi-15.txt 2> resultados/tempos-dc-mpi-15.txt
-mpirun -np 31 ./min-dist-dc-mpi 1> resultados/saida-dc-mpi-31.txt 2> resultados/tempos-dc-mpi-31.txt
-mpirun -np 63 ./min-dist-dc-mpi 1> resultados/saida-dc-mpi-63.txt 2> resultados/tempos-dc-mpi-63.txt
+mpirun -np 7  ./min-dist-dc3-paralelo 1> resultados/min-dist-dc3-paralelo-7.txt 2> resultados/min-dist-dc3-paralelo-7.txt
+mpirun -np 15 ./min-dist-dc3-paralelo 1> resultados/min-dist-dc3-paralelo-15.txt 2> resultados/min-dist-dc3-paralelo-15.txt
+mpirun -np 31 ./min-dist-dc3-paralelo 1> resultados/min-dist-dc3-paralelo-31.txt 2> resultados/min-dist-dc3-paralelo-31.txt
+mpirun -np 63 ./min-dist-dc3-paralelo 1> resultados/min-dist-dc3-paralelo-63.txt 2> resultados/min-dist-dc3-paralelo-63.txt
 
 ################
 
