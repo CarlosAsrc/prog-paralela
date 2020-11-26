@@ -1,5 +1,5 @@
 /* min-dist-dc3.cpp (Roland Teodorowitsch; 29 out. 2020)
- * Compilation: mpic++ -o min-dist-dc-mpi min-dist-dc3.cpp -lm
+ * Compilation: mpic++ -o min-dist-dc3-paralelo min-dist-dc3-paralelo.cpp -lm
  * Note: Includes some code from the sequential solution of the
  *       "Closest Pair of Points" problem from the
  *       14th Marathon of Parallel Programming avaiable at
@@ -98,7 +98,6 @@ double points_min_distance_dc(point_t *point, point_t *border, int l, int r)
 
     int menor, menor1, menor2;
     int tamanho, tamanho1, tamanho2;
-    int vetor[SIZE];
     int pai, filho1, filho2, p, id;
     MPI_Status status;
     double minDist = DBL_MAX;
