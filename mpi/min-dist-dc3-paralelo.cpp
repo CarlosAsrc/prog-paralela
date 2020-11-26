@@ -81,7 +81,7 @@ double points_distance_sqr(point_t *p1, point_t *p2)
     return dx * dx + dy * dy;
 }
 
-double points_min_distance_dc(point_t *point, point_t *border, int l, int r)
+double points_min_distance_dc(point_t *point, point_t *border, int l, int r, int p, int id)
 {
 
     const int nitems = 2;
@@ -104,8 +104,8 @@ double points_min_distance_dc(point_t *point, point_t *border, int l, int r)
     double dist;
     int i, j;
 
-    MPI_Comm_size(MPI_COMM_WORLD, &p);
-    MPI_Comm_rank(MPI_COMM_WORLD, &id);
+    // MPI_Comm_size(MPI_COMM_WORLD, &p);
+    // MPI_Comm_rank(MPI_COMM_WORLD, &id);
 
     if (id == 0)
     {
